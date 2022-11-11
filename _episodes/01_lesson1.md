@@ -10,7 +10,7 @@ toc: true
 ## Learning Objectives
 At the end of this lesson you will be able to
 
-- implement general good coding practices for readibility and functionality
+- implement general good coding practices for readability and functionality
 - reflect on what makes code easy to follow/use
 - define a personal coding style
 - develop the structure and content of an R script to improve its functionality or reproducibility
@@ -28,16 +28,17 @@ aspects into two main areas; aesthetics and functionality.
 ## First, a test of your script...
 
 Hopefully you have brought along a script which you are aiming to improve. 
-The following script will run a static code analysis to check the readability and stylistic elements of your script (first change the variable `infile` to the path to your script). 
-<linter and speed tests>
+The first script that follows will run a static code analysis to check the readability and stylistic elements of your script (first change the variable `infile` to the path to your script). 
+
+The second script requires you to input your code and will then calculate the speed of your script. 
 
     
 <details>
-    <summary><code>workshopTest.R</code></summary>
+    <summary><code>styleTest.R</code></summary>
 
 ```r
 ##---------------------------------------------------------------------#
-## Title: Linter test =================================================
+## Title: Style test =================================================
 ##
 ## Date Created: 2022-11-11
 ##---------------------------------------------------------------------#
@@ -64,7 +65,29 @@ names(lintr::linters_with_defaults())
 linter<-lint(infile, 
      linters = linters_with_defaults(object_name_linter('camelCase')))
 linter
-cbind(filename=infile, styleTest=length(linter))
+res <- cbind(filename=infile, styleTest=length(linter))
+
+# write results to file
+write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
+```
+    
+</details>
+<details>
+    <summary><code>speedTest.R</code></summary>
+
+```r
+start_time <- Sys.time()
+              
+<your-script-here>    
+    
+end_time <- Sys.time()
+
+# combine previous stylistic test results with speed
+res <- read.table("scriptTest.txt", header = TRUE) %>%
+  cbind(speedTest = end_time - start_time)
+
+# write results to file
+write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
 ```
     
 </details>
