@@ -28,7 +28,7 @@ aspects into two main areas; aesthetics and functionality.
 Hopefully you have brought along a script which you are aiming to improve. 
 <linter and speed tests>
 
-#### 1. Aesthetics
+## 1. Aesthetics
 
 ### 1.1. Linters
 
