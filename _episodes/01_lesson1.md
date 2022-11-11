@@ -28,11 +28,9 @@ aspects into two main areas; aesthetics and functionality.
 ## First, a test of your script...
 
 Hopefully you have brought along a script which you are aiming to improve. 
-The first script that follows will run a static code analysis to check the readability and stylistic elements of your script (first change the variable `infile` to the path to your script). 
 
-The second script requires you to input your code and will then calculate the speed of your script. 
+This first script that follows will run a static code analysis to check the readability and stylistic elements of your script (first change the variable `infile` to the path to your script). 
 
-    
 <details>
     <summary><code>styleTest.R</code></summary>
 
@@ -57,13 +55,8 @@ library(styler)
 ## set variable files to check
 infile <- "<path/to/your/script/here>"
 
-## check names of things to check
-names(lintr::linters_with_defaults())
-
-
 ## using a linter to check style adherence
-linter<-lint(infile, 
-     linters = linters_with_defaults(object_name_linter('camelCase')))
+linter<-lint(infile) 
 linter
 res <- cbind(filename=infile, styleTest=length(linter))
 
@@ -72,6 +65,9 @@ write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
 ```
     
 </details>
+
+This second script requires being copied into your script (so that your script sits inside) and will then calculate the speed of your script. 
+
 <details>
     <summary><code>speedTest.R</code></summary>
 
@@ -101,11 +97,11 @@ Naming conventions and grammatical structure in your code all aid in readability
 
 The package `lintr` applies this static code analysis in R. By default, it follows the tidyverse style guide but can be configured to report whichever style you might want to use. To try this out, you can simply run: 
 
-`install.packages("lintr")`
-
-`library(lintr)`
-
-`lint("<file-name.R>")`
+```r
+install.packages("lintr")
+library(lintr)`
+lint("<file-name.R>")
+```
 
 To configure this, perhaps you want to change the default naming convention to camelCase:
 
@@ -140,7 +136,7 @@ Other aesthetic tips:
         
         
     - snippets
-    ~~~
+    ```r
     snippet title
       ##---------------------------------------------------------------------#
       ##
@@ -171,44 +167,56 @@ Other aesthetic tips:
       #----------------------------------------------------------------------#
       #             ==========================================================
       #----------------------------------------------------------------------#
-    ~~~
+    ```
 </details>
 </details>
 <details open>
-<summary>
-     
-## 2. Functionality</summary>
+    <summary><h2>2. Functionality</h2></summary>
 
 This depends on what you are trying to achieve with your code!
 
 <details open>
-<summary>
-    
-### 2.1. Using functions</summary>
+    <summary><h3>2.1. Using functions</h3></summary>
 
 One coding rule is that you should never duplicate code. If you use a piece of code more than once, this should be put into a function for repeat use. 
 
 </details>
 <details open>
-<summary>
+    <summary><h3>2.2. Benchmarking</h3></summary>
+
+[Mastering Software Development in R: Profiling and Benchmarking](https://bookdown.org/rdpeng/RProgDA/profiling-and-benchmarking.html)
+
+To increase the functionality of your code, you can use the package `microbenchmark`. Install with CRAN:
     
-### 2.2. Benchmarking</summary>
-
-[https://bookdown.org/rdpeng/RProgDA/profiling-and-benchmarking.html](https://bookdown.org/rdpeng/RProgDA/profiling-and-benchmarking.html)
-
-To increase the functionality of your code, you can use the package microbenchmark
+```r
+install.packages("microbenchmark")    
+library(microbenchmark)
+```    
 
 </details>
 <details open>
-<summary>
-    
-### 2.3. Profiling</summary>
+    <summary><h3>2.3. Profiling</h3></summary>
 
 Now that you know the speed of your script, you’ll likely want to know which elements of your script are causing the bottlenecks and therefore where to focus your optimisation.
 
 The package `profvis`is useful for this. To profile code with `profvis`, just input the code into `profvis()` , using braces if it is multi-line (you need to take it out of the function if it is in one).
-</details>
-</details>
     
+```r
+install.packages("profvis")
+library(profvis)
+
+profvis({ your
+    code
+    here
+})
+```
+Once run in Rstudio, this will open a separate pane titled 'Profile 1' which looks something like below and will give you details about which parts of your script are taking the longest to run.    
+</details>
+</details>
+
+:running: Activity
+
+Now you can implement some of these additions.    
+   
 ## Additional resources
 [Why is R Slow?](http://adv-r.had.co.nz/Performance.html#language-performance)
