@@ -111,7 +111,31 @@ You can then address each point from the console output, or alternatively you ma
 
 > 💡 **ctrl-shift-a**        automatically format highlighted code with spaces
 
-  
+We will demonstrate with the below script which creates a dataframe, adds an ID column, calculates the mean of each column and then subtracts the mean from each value. Don't worry about coding along as you will get a chance to implement this with your script at the end.
+
+<details>
+    <summary><code>badScript.R</code></summary>
+    
+```r
+times=400000
+cols=100
+data<- as.data.frame(matrix(rnorm(times*cols, mean= 5),
+                           ncol =cols))
+data <-cbind(id =paste0("E",seq_len(times)), data)
+
+
+## store in new variable
+newData <- data
+
+## column means
+means <- apply(newData[, names(newData)!="id"], 2, mean)
+
+## minus mean from each column
+for (i in 1:length(means)) {
+  newData[,names(newData) != "id"][,i] <-newData[,names(newData) != "id"][, i] - means[i]
+}    
+```
+</details>
 </details>         
 <details open>
 <summary><h3>1.2. Code order</h3></summary>
@@ -125,6 +149,9 @@ There are also standard practices for code organisation. These will make your co
 
 See here: [Chapter 3 Code Structure | Best Coding Practices for R (bookdown.org)](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/code.html)
 
+</details>         
+<details open>
+<summary><h3>1.3. Aesthetic tips</h3></summary>
 Other aesthetic tips:
 
 - In RStudio:
