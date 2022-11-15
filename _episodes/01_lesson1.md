@@ -46,9 +46,7 @@ This first script that follows will run a static code analysis to check the read
 if (!require("lintr", quietly = TRUE))
     install.packages("lintr")
 
-library(microbenchmark)
 library(lintr)
-library(styler)
 
 # IMPORT DATA ===========================================================
 
@@ -72,6 +70,8 @@ This second script requires being copied into your script (so that your script s
     <summary><code>speedTest.R</code></summary>
 
 ```r
+library(magrittr)
+    
 start_time <- Sys.time()
               
 <your-script-here>    
@@ -343,9 +343,36 @@ profvis({
 
 -----
     
-## :running: Activity
+## :running: Activities
 
-Now you can implement some of these additions! Ask for help if you need it and when you're done you can rerun the initial stylistic and speed tests using the script below to see if the edits have made a difference.     
+- [ ] Implement these edits to develop your own script
+- [ ] Rerun the below script to see how these changes have improved the speed or style of your script
+        <details>
+        <summary><code>styleTest.R</code></summary>
+    
+        ## read in and write back to test file
+        res <- read.table("scriptTest.txt", header = TRUE) %>%
+                      rbind(c(.[1,1], length(lint(infile)), '')) %>%
+                      write.table("scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)          
+        
+    </details>
+        <details>
+        <summary><code>speedTest.R</code></summary>
+    
+        start_time <- Sys.time()
+
+        <your-script-here>    
+
+        end_time <- Sys.time()
+
+        # combine with previous results
+        res <- read.table("scriptTest.txt", header = TRUE) 
+        res[nrow(res), 3] <- end_time - start_time
+
+        write.table("scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)    
+        
+    </details>
+- [ ] Exchange scripts with someone sat nearby to review the readability and organisation of your script
 
 -----
     
