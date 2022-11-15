@@ -114,7 +114,7 @@ You can then address each point from the console output, or alternatively you ma
 We will demonstrate with the below script which creates a dataframe, adds an ID column, calculates the mean of each column and then subtracts the mean from each value. Don't worry about coding along as you will get a chance to implement this with your script at the end.
 
 <details>
-    <summary><code>badScript.R</code></summary>
+    <summary><code>demo.R</code></summary>
     
 ```r
 times=400000
@@ -200,7 +200,10 @@ Other aesthetic tips:
 <details open>
     <summary><h2>2. Functionality</h2></summary>
 
-This depends on what you are trying to achieve with your code!
+This depends on what you are trying to achieve with your code! We will cover a few things within improving the functionality, including using functions and speeding up 
+your script.
+    
+Further reading: [Mastering Software Development in R: Profiling and Benchmarking](https://bookdown.org/rdpeng/RProgDA/profiling-and-benchmarking.html)
 
 <details open>
     <summary><h3>2.1. Using functions</h3></summary>
@@ -211,22 +214,67 @@ One coding rule is that you should never duplicate code. If you use a piece of c
 <details open>
     <summary><h3>2.2. Benchmarking</h3></summary>
 
-[Mastering Software Development in R: Profiling and Benchmarking](https://bookdown.org/rdpeng/RProgDA/profiling-and-benchmarking.html)
-
-To increase the functionality of your code, you can use the package `microbenchmark`. Install with CRAN:
+Multiple packages exist to benchmark the speed of R code. You can do this using `Sys.time()` as we did in the initial speed test, or to look more closely at your fucntions, you can use the package `microbenchmark`:
     
 ```r
 install.packages("microbenchmark")    
 library(microbenchmark)
 ```    
 
+For example, you may have heard the classic R advice which is to use the `apply` family of functions instead of a `for` loop. However, in some cases it can be quicker to run a for loop. Let's test this using the earlier script:
+    
+<details>
+    <summary><code>demo.R</code></summary>
+    
+```r
+if (!require("microbenchmark", quietly = TRUE))
+  install.packages("microbenchmark")
+library(microbenchmark)
+
+times <- 400000
+cols <- 100
+data <- as.data.frame(matrix(rnorm(times * cols, mean = 5),
+                             ncol = cols))
+data <- cbind(id = paste0("E", seq_len(times)), data)
+
+
+## store in new variable
+newData <- data
+
+for_family <- function(data) {
+  means <- apply(data[, names(data) != "id"], 2, mean)
+  
+  ## minus mean from each column
+  for (i in seq_along(means)) {
+    data[, names(data) != "id"][, i] <-
+      data[, names(data) != "id"][, i] - means[i]
+  }
+  return(data)
+}
+
+apply_family <- function(data) {
+  newData <- apply(data[, 2:ncol(data)], 2, function(x) {
+    x - mean(x)
+  })
+  data <- cbind.data.frame(id = data[, 1], newData)
+  return(data)
+}
+
+identical(apply_family(newData), for_family(newData))
+
+microbenchmark(apply_family(newData), for_family(newData), times = 10)
+```
+</details>          
+    
+First check that your two functions make the same object with `identical()`, then run `microbenchmark`. You can add edit the `times = ` parameter, the default is 100.
+    
 </details>
 <details open>
     <summary><h3>2.3. Profiling</h3></summary>
 
 Now that you know the speed of your script, you’ll likely want to know which elements of your script are causing the bottlenecks and therefore where to focus your optimisation.
 
-The package `profvis`is useful for this. To profile code with `profvis`, just input the code into `profvis()` , using braces if it is multi-line (you need to take it out of the function if it is in one).
+The package `profvis` is useful for this. To profile code with `profvis`, just input the code into `profvis()`, using braces if it is multi-line (you need to take it out of the function if it is in one).
     
 ```r
 install.packages("profvis")
@@ -237,13 +285,71 @@ profvis({ your
     here
 })
 ```
-Once run in Rstudio, this will open a separate pane titled 'Profile 1' which looks something like below and will give you details about which parts of your script are taking the longest to run.    
+Once run in RStudio, this will open a separate pane titled 'Profile 1' which looks something like below and will give you details about which parts of your script are taking the longest to run.   
+    
+<center><img src="https://rstudioblog.files.wordpress.com/2016/05/profile.png" width="400"></center>
+
+    
+We will implement this with the previous script:
+    
+<details>
+    <summary><code>demo.R</code></summary>
+    
+```r
+if (!require("profvis", quietly = TRUE))
+  install.packages("profvis")
+library(profvis)
+
+times <- 400000
+cols <- 100
+data <- as.data.frame(matrix(rnorm(times * cols, mean = 5),
+                             ncol = cols))
+data <- cbind(id = paste0("E", seq_len(times)), data)
+
+profvis({
+  ## store in new variable
+  newData <- data
+ 
+  ## column means
+  means <- apply(newData[, names(newData)!="id"], 2, mean)
+  
+  ## minus mean from each column
+  for (i in seq_along(means)) {
+    newData[, names(newData) != "id"][,i] <- newData[,names(newData) != "id"][, i] - means[i]
+  }
+})
+```
+</details>
+    
+Now that we know where the issue is, different methods for achieving this step can also be profiled with `profvis` demonstrating the quickest method. 
+
+<details>
+    <summary><code>demo.R</code></summary>
+    
+```r
+profvis({
+  newData<- data
+  # Four different ways of getting column means
+  means <- apply(newData[, names(newData) != "id"], 2, mean)
+  means <- colMeans(newData[, names(newData) != "id"])
+  means <- lapply(newData[, names(newData) != "id"], mean)
+  means <- vapply(newData[, names(newData) != "id"], mean, numeric(1))
+})
+```
+</details>
+
 </details>
 </details>
 
-:running: Activity
+-----
+    
+## :running: Activity
 
-Now you can implement some of these additions.    
-   
+Now you can implement some of these additions! Ask for help if you need it and when you're done you can rerun the initial stylistic and speed tests using the script below to see if the edits have made a difference.     
+
+-----
+    
 ## Additional resources
 [Why is R Slow?](http://adv-r.had.co.nz/Performance.html#language-performance)
+    
+Materials developed from: [Profiling R code with the RStudio IDE](https://support.posit.co/hc/en-us/articles/218221837-Profiling-with-RStudio)
