@@ -6,41 +6,41 @@ title: Course Information
 
 ## Overview
 
-Insert description paragraph
+Reproducibility and code sharing has become a hot topic in research. Many researchers are reluctant to share their code as they view it as “ugly”, or “messy”. They are also conscious that they might not be executing the task in the “correct” way. This course is aimed at those with some experience of R who have a script they want to improve the style, performance and/or reproducibility of. Our objective is provide you with tools and tips that make you feeling more confident in your ability as a programmer and ultimately empower you to feel confident sharing that code.
 
 ## Course objectives
 
 This course will covering the following:
 
-- Bullet point learning objectives
+- what makes code easy to follow or use
+- what are good coding practices that emphasise readability and functionality
+- how to define a personal coding style
+- how to develop the structure and content of an R script to improve its functionality or reproducibility
+- how to measure the quality/efficiency of an R script
 
-## Pre-requisite knowledge
 
-Specify as either essential or preferable, and try to relate to courses we provide and their learning objectives.
+## Pre-requisites
+
+- Students will need to bring their own laptops and have access to a text editor and R or Rstudio.
+- A current user of R
+- An existing R script that they want to develop during the course of the workshop.
+
 
 ## Workshop format
 
-This a hybrid workshop run over XX sessions. The [schedule can be found here](https://uniexeterrse.github.io/UoE-workshop-template/schedule.html).
+This a hybrid workshop run over 1 sessions. The [schedule can be found here](https://uniexeterrse.github.io/improve-r-code/schedule.html).
 
 ## Upcoming course dates
 
 | Session name | Dates | Time  | Venue | Sign up link |
 | --- |--- |--- |--- | --- |
-| Session 1 | TBC | TBC | TBC | TBC |
+| Session 1 | 8th December | 1pm-4pm | Training Room 4, Old Library, Streatham Campus | TBC |
 
-Registration for this course is handled by [University of Exeter Researcher Development](https://www.exeter.ac.uk/research/doctoralcollege/early-career-researchers/traininganddevelopment/rdprogramme/)
 
-## Set-up instructions for attendees
-
-If you have registered for this course you can find the [instructions for setting up your computer here.](https://uniexeterrse.github.io/workshop-template-test/setup.html)
 
 ## Start course
 
-If you are unable to attend any of the dates above the [notes for this course are available here](https://uniexeterrse.github.io/workshop-template-test/contents.html) and are freely available to work through in your own time. Please note that you will need to have completed the set up instructions above.
-
-## Follow up courses
-
-On completion of these course you will be invited to join a network of other participants. This is a supportive forum for you to ask follow up question and receive tailed invites to follow on courses.
+If you are unable to attend any of the dates above the [notes for this course are available here](https://uniexeterrse.github.io/improve-r-code/contents.html) and are freely available to work through in your own time. 
 
 ## Feedback
 
@@ -52,7 +52,7 @@ If you are interested in becoming part of our community of workshop helpers, lea
 
 ## Acknowledgements
 
-This course was adapted from XXX and has been developed by the University of Exeter's Research Software Engineering Group and [a team of generous volunteers](https://uniexeterrse.github.io/UoE-workshop-template/acknowledgements.html) who are enthusiastic about sharing their skills with the wider research community. Its provision is dependent on the time of these volunteers. If you have benefitted in any way from this course and want to support its long term sustainability then please take the time to complete our feedback survey, recommend it to your colleagues, and enthuse about it to your senior leadership team.
+This course was put together by a series of working groups formed by researchers from across the University supported by [Exeter's Research Software Engineering Group](https://uniexeterrse.github.io/improve-r-code/acknowledgements.html) who are enthusiastic about sharing their skills with the wider research community. If you have benefitted in any way from this course and want to support its long term sustainability then please take the time to complete our feedback survey, recommend it to your colleagues, and enthuse about it to your senior leadership team.
 
 This workshop is brought to you by:
 
