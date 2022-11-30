@@ -87,6 +87,7 @@ write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
 ```
     
 </details>
+    
 <details open>
     <summary><h2>1. Aesthetics</h2></summary>
 
