@@ -52,7 +52,7 @@ If you are interested in becoming part of our community of workshop helpers, lea
 
 ## Acknowledgements
 
-This course was put together by a series of working groups formed by researchers from across the University supported by [Exeter's Research Software Engineering Group](https://uniexeterrse.github.io/improve-r-code/acknowledgements.html) who are enthusiastic about sharing their skills with the wider research community. If you have benefitted in any way from this course and want to support its long term sustainability then please take the time to complete our feedback survey, recommend it to your colleagues, and enthuse about it to your senior leadership team.
+This course was put together by a series of working groups formed by researchers from across the University supported by [Exeter's Research Software Engineering Group](https://uniexeterrse.github.io/improve-r-code/acknowledgements.html) who are enthusiastic about sharing their skills with the wider research community. Materials developed from: [Profiling R code with the RStudio IDE](https://support.posit.co/hc/en-us/articles/218221837-Profiling-with-RStudio). If you have benefitted in any way from this course and want to support its long term sustainability then please take the time to complete our feedback survey, recommend it to your colleagues, and enthuse about it to your senior leadership team.
 
 This workshop is brought to you by:
 
