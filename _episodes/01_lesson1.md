@@ -43,7 +43,7 @@ To get this script to run a static code analysis of the script you have brought 
 The second profiling script needs to be copied into your script and will calculate the speed of your script and the functions within it. 
 
 
-~~~
+~~~r
 library(magrittr)
     
 start_time <- Sys.time()
@@ -66,15 +66,15 @@ write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
 <details open>
     <summary><h3>1.1. Linters</h3></summary>
 
-Naming conventions and grammatical structure in your code all aid in readability and reproducibility of code. There are tools known as linters which provide a static code analysis, checking for syntax errors, sematic issues and adherence to particular style. 
+Naming conventions and grammatical structure in your code all aid the readability and reproducibility of your code. There are tools known as linters which provide static code analysis, checking for syntax errors, sematic issues and adherence to particular coding style. 
 
 The package `lintr` applies this static code analysis in R. By default, it follows the tidyverse style guide but can be configured to report whichever style you might want to use. To try this out, you can simply run: 
 
-```r
+~~~
 install.packages("lintr")
 library(lintr)`
 lint("<file-name.R>")
-```
+~~~
 
 To configure this, perhaps you want to change the default naming convention to camelCase:
 
@@ -108,6 +108,7 @@ for (i in 1:length(means)) {
   newData[,names(newData) != "id"][,i] <-newData[,names(newData) != "id"][, i] - means[i]
 }    
 ```
+
 </details>
 </details>         
 <details open>
@@ -168,6 +169,7 @@ Other aesthetic tips:
       #             ==========================================================
       #----------------------------------------------------------------------#
     ```
+
 </details>
 </details>
 <details open>
@@ -237,6 +239,7 @@ identical(apply_family(newData), for_family(newData))
 
 microbenchmark(apply_family(newData), for_family(newData), times = 10)
 ```
+
 </details>          
     
 First check that your two functions make the same object with `identical()`, then run `microbenchmark`. You can add edit the `times = ` parameter, the default is 100.
