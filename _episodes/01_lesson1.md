@@ -77,7 +77,7 @@ The second profiling script needs to be copied into your script and will calcula
 <details>
     <summary><code>speedTest.R</code></summary>
 
-```
+~~~
 library(magrittr)
     
 start_time <- Sys.time()
@@ -92,7 +92,7 @@ res <- read.table("scriptTest.txt", header = TRUE) %>%
 
 # write results to file
 write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
-```
+~~~
 
 </details>
 
