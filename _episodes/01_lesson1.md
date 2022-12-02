@@ -37,38 +37,6 @@ Hopefully you have brought along a script which you want to improve.
 First, we are going  assess the readability and stylistic elements of your script. For this you will need the `styleTest.R` script. 
 To get this script to run a static code analysis of the script you have brought you need to first change the variable `infile` to the path to your script. 
 
-<details>
-    <summary><code>styleTest.R</code></summary>
-
-```r
-##---------------------------------------------------------------------#
-## Title: Style test =================================================
-##
-## Date Created: 2022-11-11
-##---------------------------------------------------------------------#
-
-# LOAD PACKAGES ========================================================
-
-if (!require("lintr", quietly = TRUE))
-    install.packages("lintr")
-
-library(lintr)
-
-# IMPORT DATA ===========================================================
-
-## set variable files to check
-infile <- "<path/to/your/script/here>"
-
-## using a linter to check style adherence
-linter<-lint(infile) 
-linter
-res <- cbind(filename=infile, styleTest=length(linter))
-
-# write results to file
-write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
-```
-    
-</details>
 
 ## ADD SOME INTERPRETATION
 
@@ -91,33 +59,6 @@ res <- read.table("scriptTest.txt", header = TRUE) %>%
 # write results to file
 write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
 ~~~
-
-<details>
-    <summary><code>speedTest.R</code></summary>
-
-* Vegetables
-* Fruits
-* Fish
-
-~~~
-library(magrittr)
-    
-start_time <- Sys.time()
-              
-<your-script-here>    
-    
-end_time <- Sys.time()
-
-# combine previous stylistic test results with speed
-res <- read.table("scriptTest.txt", header = TRUE) %>%
-  cbind(speedTest = end_time - start_time)
-
-# write results to file
-write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
-~~~
-
-</details>
-
 
 <details open>
     <summary><h2>1. Aesthetics</h2></summary>
