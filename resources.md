@@ -5,4 +5,8 @@ title: Resources
 
 ## Datasets required for workshop
 
-## Links to additional material
+## Additional resources
+[Why is R Slow?](http://adv-r.had.co.nz/Performance.html#language-performance)
+    
+
+
