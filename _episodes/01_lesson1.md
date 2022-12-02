@@ -7,29 +7,35 @@ length: 20
 toc: true
 ---
 
-## Learning Objectives
-At the end of this lesson you will be able to
-
-- implement general good coding practices for readability and functionality
-- reflect on what makes code easy to follow/use
-- define a personal coding style
-- develop the structure and content of an R script to improve its functionality or reproducibility
-
-
-    
 ## Why do you want to improve your code?
 
-Are you aiming to make your code more readable? Maybe you want to share your scripts? Speed up parts of your analysis, or find out which functions are 
-slowing down your script?
-The reasons behind your rationale for joining this class will affect which parts of this course you incorporate into your coding. We have split up these 
-aspects into two main areas; aesthetics and functionality.
+Discussion activity: 
+- Why are you here today? 
+- What is it about your code that you think needs improving?
+- If you know what you need to do, why have you yet to implement it?
+- Why is it important that your code looks good?
+
+"Improve" is a vague concept and it is likely that you have all interepted it differently. There are a number of reasons/way you might want to "improve" your script. Of course it is highly possible that you want to achieve all of these.
+
+1) Are you aiming to make your code more readable/user friendly? Or look more "professional"? Maybe you want to share your script, either internallly or publically, and you think it's messy, hard to follow, or unconventional in it's structure. Perhaps you are interested in looking out for your future self and editting your script so you can understand it in the future.  
+
+2) You think your script is inefficient. Maybe you need to speed up parts of your analysis to decrease the overall run time and identify which functions are 
+slowing down your script? Or the code is overly repeatative/verbose, there are unnesseecary steps and could be condensed to improve usability.
+
+3) You want to generalise your code such that it can be reused in another analysis/project, either in it's entirity or components of it. 
+
+4) You are concerned that there might be an error in your code, such that it doesn't do what it should. Or perhaps there is an error in the method you have choosen.   
+
+These reasons can be grouped into two main concepts; aesthetics and functionality. 
+Everyone here might have different reasons for attending this class today, we will cover all of these, and it is up to you which you choose to focus on and incorporate into your coding today. 
 
     
 ## First, a test of your script...
 
-Hopefully you have brought along a script which you are aiming to improve. 
+Hopefully you have brought along a script which you want to improve. 
 
-This first script that follows will run a static code analysis to check the readability and stylistic elements of your script (first change the variable `infile` to the path to your script). 
+First, we are going  assess the readability and stylistic elements of your script. For this you will need the `styleTest.R` script. 
+To get this script to run a static code analysis of the script you have brought you need to first change the variable `infile` to the path to your script. 
 
 <details>
     <summary><code>styleTest.R</code></summary>
@@ -64,12 +70,14 @@ write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
     
 </details>
 
-This second script requires being copied into your script (so that your script sits inside) and will then calculate the speed of your script. 
+## ADD SOME INTERPRETATION
+
+The second profiling script needs to be copied into your script and will calculate the speed of your script and the functions within it. 
 
 <details>
     <summary><code>speedTest.R</code></summary>
 
-```r
+```
 library(magrittr)
     
 start_time <- Sys.time()
@@ -85,9 +93,9 @@ res <- read.table("scriptTest.txt", header = TRUE) %>%
 # write results to file
 write.table(res, "scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)
 ```
-    
+
 </details>
-    
+
 <details open>
     <summary><h2>1. Aesthetics</h2></summary>
 

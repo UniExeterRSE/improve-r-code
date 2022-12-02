@@ -30,12 +30,24 @@ This workshop, and the others in the series, were put together by a series of wo
 
 ## Workshop format
 
-We will start by introducing the workshop leaders and helpers. We are all here because we are passionate about sharing our knowledge and supporting the development of our colleagues. For most of us, this is not a requirement of our current position and we are doing this at the margins of our time.
+## The plan for the workshop
 
-The workshop in organised into episodes of content, which can be seen in the workshop schedule available on the course website. This workshop will consist of demonstrations, discussions and activities for you to complete. Our aim is to have an official break every 60-90 minutes, but there will also be periods in-between demonstrations where you are free to take additional comfort breaks if required.  This is a hybrid workshop, please be aware of this, online participants we find that engagement is higher if you are willing to turn your cameras on.
+Today's workshop is led by XX and supported by XX. We are all here because we are passionate about sharing our knowledge and supporting the development of our colleagues. For most of us, this is not a requirement of our current position and we are doing this at the margins of our time.
+
+In this workshop you will be working with a script that you have brought with you. We are going to do start my profiling our scripts so we have baseline of their performance. We will then cover some ways to improve your code. Importantly you will then have lots of time to implement these suggestions before reprofiling your script again at the end. Please take advantage of the helpers. 
+
+We will pause for a break every 60-90 minutes, but there will also be periods in-between demonstrations where you are free to take additional comfort breaks if required.  This is a hybrid workshop, please be aware of this, online participants we find that engagement is higher if you are willing to turn your cameras on. There will be a dedicated helper for online participanmts please, either raise your hand or type any questions into the chat. In person participants you are also able to use the Teams link to join the chat. 
 
 Our aim is to be responsive to the needs of the group, both in person and virtual. Therefore, think of the schedule as a guide rather than a strict timetable. We welcome questions and queries as we go along, there are helpers in the room so raise your hand if you need assistance. There is also a dedicated helper for the virtual participants so please raise your virtual hand to attract their attention. In person participants you are welcome to post questions in the Teams chat,if you find this easier than putting your hand up. This will be saved and distributed at the end of the workshop.  
 
-We welcome questions and queries as we go along, so raise your hand if you need assistance. We would like to highlight that we have a [code of conduct](https://uniexeterrse.github.io/intro-to-r/code.html)  - essentially be respectful and aware that we all have different backgrounds, experiences and viewpoints and by attending this workshop you are agreeing to abide by it.
+We welcome questions and queries as we go along, so raise your hand if you need assistance. We would like to highlight that we have a [code of conduct](https://uniexeterrse.github.io/improve-r-code/code.html)  - essentially be respectful and aware that we all have different backgrounds, experiences and viewpoints and by attending this workshop you are agreeing to abide by it.
+
+## Learning Objectives
+At the end of this workshop you will be able to
+
+- reflect on what makes code easy to follow/use
+- define a personal coding style
+- implement general good coding practices for readability and functionality
+- develop the structure and content of an R script to improve its functionality or reproducibility
 
 Let's get started.
