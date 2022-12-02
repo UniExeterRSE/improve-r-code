@@ -34,7 +34,7 @@ This a hybrid workshop run over 1 sessions. The [schedule can be found here](htt
 
 | Session name | Dates | Time  | Venue | Sign up link |
 | --- |--- |--- |--- | --- |
-| Session 1 | 8th December | 1pm-4pm | Training Room 4, Old Library, Streatham Campus | TBC |
+| Session 1 | 8th December | 1pm-4pm | Training Room 4, Old Library, Streatham Campus | Closed |
 
 
 
