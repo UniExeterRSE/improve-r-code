@@ -32,51 +32,7 @@ install.packages("microbenchmark")
 library(microbenchmark)
 ```    
 
-For example, you may have heard the classic R advice which is to use the `apply` family of functions instead of a `for` loop. However, in some cases it can be quicker to run a for loop. Let's test this using the earlier script:
-    
-<details>
-    <summary><code>demo.R</code></summary>
-    
-```r
-if (!require("microbenchmark", quietly = TRUE))
-  install.packages("microbenchmark")
-library(microbenchmark)
-
-times <- 400000
-cols <- 100
-data <- as.data.frame(matrix(rnorm(times * cols, mean = 5),
-                             ncol = cols))
-data <- cbind(id = paste0("E", seq_len(times)), data)
-
-
-## store in new variable
-newData <- data
-
-for_family <- function(data) {
-  means <- apply(data[, names(data) != "id"], 2, mean)
-  
-  ## minus mean from each column
-  for (i in seq_along(means)) {
-    data[, names(data) != "id"][, i] <-
-      data[, names(data) != "id"][, i] - means[i]
-  }
-  return(data)
-}
-
-apply_family <- function(data) {
-  newData <- apply(data[, 2:ncol(data)], 2, function(x) {
-    x - mean(x)
-  })
-  data <- cbind.data.frame(id = data[, 1], newData)
-  return(data)
-}
-
-identical(apply_family(newData), for_family(newData))
-
-microbenchmark(apply_family(newData), for_family(newData), times = 10)
-```
-
-</details>          
+For example, you may have heard the classic R advice which is to use the `apply` family of functions instead of a `for` loop. However, in some cases it can be quicker to run a for loop. Let's test this using the earlier demo script, this time `demo_2.R`.     
     
 First check that your two functions make the same object with `identical()`, then run `microbenchmark`. You can add edit the `times = ` parameter, the default is 100.
     
@@ -102,53 +58,9 @@ Once run in RStudio, this will open a separate pane titled 'Profile 1' which loo
 <center><img src="https://rstudioblog.files.wordpress.com/2016/05/profile.png" width="400"></center>
 
     
-We will implement this with the previous script:
-    
-<details>
-    <summary><code>demo.R</code></summary>
-    
-```r
-if (!require("profvis", quietly = TRUE))
-  install.packages("profvis")
-library(profvis)
-
-times <- 400000
-cols <- 100
-data <- as.data.frame(matrix(rnorm(times * cols, mean = 5),
-                             ncol = cols))
-data <- cbind(id = paste0("E", seq_len(times)), data)
-
-profvis({
-  ## store in new variable
-  newData <- data
- 
-  ## column means
-  means <- apply(newData[, names(newData)!="id"], 2, mean)
-  
-  ## minus mean from each column
-  for (i in seq_along(means)) {
-    newData[, names(newData) != "id"][,i] <- newData[,names(newData) != "id"][, i] - means[i]
-  }
-})
-```
-</details>
-    
+We will implement this with the previous script, `demo_3.R`:
+     
 Now that we know where the issue is, different methods for achieving this step can also be profiled with `profvis` demonstrating the quickest method. 
-
-<details>
-    <summary><code>demo.R</code></summary>
-    
-```r
-profvis({
-  newData<- data
-  # Four different ways of getting column means
-  means <- apply(newData[, names(newData) != "id"], 2, mean)
-  means <- colMeans(newData[, names(newData) != "id"])
-  means <- lapply(newData[, names(newData) != "id"], mean)
-  means <- vapply(newData[, names(newData) != "id"], mean, numeric(1))
-})
-```
-</details>
 
 </details>
 </details>
@@ -158,32 +70,7 @@ profvis({
 ## :running: Activities
 
 - [ ] Implement these edits to develop your own script
-- [ ] Rerun the below script to see how these changes have improved the speed or style of your script
-        <details>
-        <summary><code>styleTest.R</code></summary>
-    
-        ## read in and write back to test file
-        res <- read.table("scriptTest.txt", header = TRUE) %>%
-                      rbind(c(.[1,1], length(lint(infile)), '')) %>%
-                      write.table("scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)          
-        
-    </details>
-        <details>
-        <summary><code>speedTest.R</code></summary>
-    
-        start_time <- Sys.time()
-
-        <your-script-here>    
-
-        end_time <- Sys.time()
-
-        # combine with previous results
-        res <- read.table("scriptTest.txt", header = TRUE) 
-        res[nrow(res), 3] <- end_time - start_time
-
-        write.table("scriptTest.txt", sep = '\t', row.names = FALSE, quote = FALSE)    
-        
-    </details>
+- [ ] Rerun the test scripts `testStyle_2.R` and `testSpeed_2.R` to see how these changes have improved the speed or style of your script
 - [ ] Exchange scripts with someone sat nearby to review the readability and organisation of your script
 
 -----
