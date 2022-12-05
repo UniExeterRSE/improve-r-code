@@ -9,7 +9,9 @@ toc: true
 
 ## Welcome
 
-Welcome to **Improve your R code**. The aim of this workshop is to identify small improvements you can make to an existing R script that make it more user friendly to read and run more efficiently. We assume that you are already familar with R and use it in your research. We also assume that you have brought with you a script (or scripts) to work on. One of the barriers to sharing our code, either formally at the stage of publication or internally with collegues. At the end of this workshop you should have script you consider good enough to share. While the tools we will use are specific to R, the concepts are transferable to all programming languages.
+Welcome to **Improve your R code**. The aim of this workshop is to identify small improvements you can make to an existing R script that make it more user friendly to read and run more efficiently. One of the barriers to sharing our code, either formally at the stage of publication or internally with collegues, is a feeling that it is not "good" enough or "professional" enough. Through this workshop you should be able to reflect on what makes code "good" and specifically what you need to do to make your code "good" enough to share. 
+
+We assume that you are already familar with R and use it in your research. We also assume that you have brought with you a script (or scripts) to work on.  At the end of this workshop you should have script you consider good enough to share. While the tools we will use are specific to R, the concepts are transferable to all programming languages.
 
 ## Introduction to Coding For Reproducible Research
 
@@ -30,11 +32,9 @@ This workshop, and the others in the series, were put together by a series of wo
 
 ## Workshop format
 
-## The plan for the workshop
-
 Today's workshop is led by XX and supported by XX. We are all here because we are passionate about sharing our knowledge and supporting the development of our colleagues. For most of us, this is not a requirement of our current position and we are doing this at the margins of our time.
 
-In this workshop you will be working with a script that you have brought with you. We are going to do start my profiling our scripts so we have baseline of their performance. We will then cover some ways to improve your code. Importantly you will then have lots of time to implement these suggestions before reprofiling your script again at the end. Please take advantage of the helpers. 
+In this workshop you will be working with a script that you have brought with you. We are going to do start my profiling our scripts so we have baseline of their performance. We will then cover some ways to improve your code. Importantly you will then have lots of time to implement these suggestions before reprofiling your script again at the end - hopefully you will some quantitative as well as qualitative improvments! 
 
 We will pause for a break every 60-90 minutes, but there will also be periods in-between demonstrations where you are free to take additional comfort breaks if required.  This is a hybrid workshop, please be aware of this, online participants we find that engagement is higher if you are willing to turn your cameras on. There will be a dedicated helper for online participanmts please, either raise your hand or type any questions into the chat. In person participants you are also able to use the Teams link to join the chat. 
 
@@ -43,6 +43,7 @@ Our aim is to be responsive to the needs of the group, both in person and virtua
 We welcome questions and queries as we go along, so raise your hand if you need assistance. We would like to highlight that we have a [code of conduct](https://uniexeterrse.github.io/improve-r-code/code.html)  - essentially be respectful and aware that we all have different backgrounds, experiences and viewpoints and by attending this workshop you are agreeing to abide by it.
 
 ## Learning Objectives
+
 At the end of this workshop you will be able to
 
 - reflect on what makes code easy to follow/use
