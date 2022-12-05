@@ -17,12 +17,12 @@ Discussion activity:
 
 "Improve" is a vague concept and it is likely that you have all interepted it differently. There are a number of reasons/way you might want to "improve" your script. Of course it is highly possible that you want to achieve all of these.
 
-1) Are you aiming to make your code more readable/user friendly? Or look more "professional"? Maybe you want to share your script, either internallly or publically, and you think it's messy, hard to follow, or unconventional in it's structure. Perhaps you are interested in looking out for your future self and editting your script so you can understand it in the future.  
+1) Are you aiming to make your code more readable/user friendly? Or look more "professional"? Maybe you want to share your script, either internallly or publically, and you think it's messy, hard to follow, or unconventional in it's structure. Perhaps you are interested in looking out for your future self and editing your script so you can understand it in the future.  
 
 2) You think your script is inefficient. Maybe you need to speed up parts of your analysis to decrease the overall run time and identify which functions are 
 slowing down your script? Or the code is overly repeatative/verbose, there are unnesseecary steps and could be condensed to improve usability.
 
-3) You want to generalise your code such that it can be reused in another analysis/project, either in it's entirity or components of it. 
+3) You want to generalise your code such that it can be reused in another analysis/project, either in it's entirety or components of it. 
 
 4) You are concerned that there might be an error in your code, such that it doesn't do what it should. Or perhaps there is an error in the method you have choosen.   
 
