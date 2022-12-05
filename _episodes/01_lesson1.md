@@ -34,7 +34,7 @@ Everyone here might have different reasons for attending this class today, we wi
 
 Hopefully you have brought along a script which you want to improve. 
 
-First, we are going  assess the readability and stylistic elements of your script. For this you will need the `styleTest.R` script. 
+First, we are going  assess the readability and stylistic elements of your script. For this you will need the `01_testStyle.R` script. 
 To get this script to run a static code analysis of the script you have brought you need to first change the variable `infile` to the path to your script. 
 
 
