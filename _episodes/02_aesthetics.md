@@ -42,32 +42,8 @@ You can then address each point from the console output, or alternatively you ma
 
 > 💡 **ctrl-shift-a**        automatically format highlighted code with spaces
 
-We will demonstrate with the below script which creates a dataframe, adds an ID column, calculates the mean of each column and then subtracts the mean from each value. Don't worry about coding along as you will get a chance to implement this with your script at the end.
+We will demonstrate with a script, `01_demo.R` which creates a dataframe, adds an ID column, calculates the mean of each column and then subtracts the mean from each value. The script can be found in the same place as the test scripts. Don't worry about coding along as you will get a chance to implement this with your script at the end.
 
-<details>
-    <summary><code>demo.R</code></summary>
-    
-```r
-times=400000
-cols=100
-data<- as.data.frame(matrix(rnorm(times*cols, mean= 5),
-                           ncol =cols))
-data <-cbind(id =paste0("E",seq_len(times)), data)
-
-
-## store in new variable
-newData <- data
-
-## column means
-means <- apply(newData[, names(newData)!="id"], 2, mean)
-
-## minus mean from each column
-for (i in 1:length(means)) {
-  newData[,names(newData) != "id"][,i] <-newData[,names(newData) != "id"][, i] - means[i]
-}    
-```
-
-</details>
 </details>         
 <details open>
 <summary><h3>1.2. Structure of the Code</h3></summary>
