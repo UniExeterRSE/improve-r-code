@@ -32,3 +32,5 @@ These reasons can be grouped into two main concepts; aesthetics and functionalit
 
 Everyone here might have different reasons for attending this class today, we will cover all of these, and it is up to you which you choose to focus on and incorporate into your coding today. 
 </details>
+
+Hopefully you have brought along a script that you want to improve.
