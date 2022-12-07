@@ -9,7 +9,7 @@ toc: true
 
 ## Why do you want to improve your code?
 
-**Discussion activity: Why are you here today?** 
+🏃‍♀️ **Activity: Why are you here today?** 
 
 In small groups/Slido discuss the points below. Think about your all your codes not just the one you have brought with you today. 
 
