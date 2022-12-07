@@ -39,7 +39,7 @@ As you can see microbenchmark provides a number of summary statistics; `min`, `l
 
 -----
 
-### 2.3. Profiling
+### 2.2. Profiling
 
 Now that you know the speed of your script, you’ll likely want to know which elements of your script are causing the bottlenecks and therefore where to focus your optimisation.
 
@@ -71,24 +71,40 @@ The profiler gives you two tabs to look at. The data view provides a top-down ta
     
 </details>
 
-Now that we know where the issue is, different methods for achieving this step can also be profiled with `profvis` demonstrating the quickest method. Let's look at this with `demo_4.R`.
+Now that we know where the issue is, different methods for achieving this step can also be profiled with `profvis` demonstrating the quickest method. An obvious alternative is to use the `colMeans` function. But there’s also another possibility. Data frames are implemented as lists of vectors, where each column is one vector, so we could use lapply or vapply to apply the mean function over each column. Let’s compare the speed of these four different ways of getting column means with `demo_4.R`.
 
 
 <details>
     <summary>Output</summary>  
 
+Which command is the fastest? Are you surprised? `colMeans` is about 6x faster than using apply with mean, but it's still using `as.matrix`, which takes a significant amount of time. `lapply/vapply` are faster yet – about 10x faster than apply. As the desired form is a numeric vector, which is the best option to go for?
+    
 </details>
 
 ----
 
 ### 2.3. Spaghetti code and code smells
 
-One coding rule is that you should never duplicate code. If you use a piece of code more than once, this should be put into a function for repeat use. 
+Materials adapted from the [Good Code Handbook](https://goodresearch.dev/decoupled.html).
 
+A code smell is a problem with the code that indicates there might be some larger underlying issue, for example:
+- Duplicated code: large portions of duplicated code with small tweaks
+- Large functions: big, unwieldy functions that do a little bit of everything
+- High cyclomatic complexity: lots of nested ifs and for loops
+- Embedded configuration: paths and filenames are hardcoded 
+
+From this we can conclude that a better way to code is to: 
+
+- **Never duplicate.** If you use a piece of code more than once, put into a function for repeat use. 
+- **Write simple functions.** Each function should do one task only. i.e. if your function reads an input, does a few different calculations, plots a graph and writes to a table, how can you rewrite this to two or even three functions? Otherwise this is going to reduce the useability of that function in other circumstances, as well as add more complexity to your code.
+- **Avoid writing for loop inside for loop inside for loop.** Use functions or the apply family if you have to do more than one iteration inside an iteration. 
+- **Use config files.** Though we won't go into this too much today, having a separate file that you call with file paths specific to your computer aids in the portability of your code. Say you have your own config file with the variable `dataDir`. This may be `dataDir <- "/home/data/"` in your config, but `dataDir <- "home/phdProject/mainDataSource/"` in someone else's. By calling `source("./config.r")` in the R script, as long as that path is correct, you now have no embedded filepaths and the script can be shared between colleagues who are storing the data in separate places.
+
+When code has a lot of code smells, it can become so unrobust that it is difficult or impossible to change. Such code is often deemed spaghetti code, code so tightly wound that when you pull on one strand, the entire thing unravels. To be clear, the problem with spaghetti code is not that it doesn’t work, it's that it is inscrutable and unrobust.
 
 -----
     
-## :running: Activities
+## 🏃‍♀️ Activities
 
 - [ ] Have a look now at your own script. How fast does it run? Which parts of the code are the slowest? Can you make any changes to reduce the bottleneck? 
 - [ ] Do you use a for loop in your script? An apply function? Write as the opposite and test with `microbenchmark`. Which is the fastest way of iterating through your data?
