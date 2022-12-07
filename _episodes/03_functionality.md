@@ -100,7 +100,7 @@ From this we can conclude that a better way to code is to:
 - **Avoid writing for loop inside for loop inside for loop.** Use functions or the apply family if you have to do more than one iteration inside an iteration. 
 - **Use config files.** Though we won't go into this too much today, having a separate file that you call with file paths specific to your computer aids in the portability of your code. Say you have your own config file with the variable `dataDir`. This may be `dataDir <- "/home/data/"` in your config, but `dataDir <- "home/phdProject/mainDataSource/"` in someone else's. By calling `source("./config.r")` in the R script, as long as that path is correct, you now have no embedded filepaths and the script can be shared between colleagues who are storing the data in separate places.
 
-When code has a lot of code smells, it can become so unrobust that it is difficult or impossible to change. Such code is often deemed spaghetti code, code so tightly wound that when you pull on one strand, the entire thing unravels. To be clear, the problem with spaghetti code is not that it doesn’t work, it's that it is inscrutable and unrobust.
+When code has a lot of code smells, it can become so fragile that it is difficult or impossible to change. Such code is often deemed spaghetti code, code so tightly wound that when you pull on one strand, the entire thing unravels. To be clear, the problem with spaghetti code is not that it doesn’t work, it's that it is inscrutable and unrobust.
 
 -----
     
