@@ -47,7 +47,7 @@ You can then address each point from the console output, or alternatively you ma
 
 > 💡 **ctrl-shift-a**        automatically format highlighted code with spaces
 
-We will demonstrate with a script, `demo_1.R` (in [resources](https://uniexeterrse.github.io/improve-r-code/resources.html)), which creates a dataframe, adds an ID column, calculates the mean of each column and then subtracts the mean from each value. The script can be found in the same place as the test scripts. Don't worry about coding along as you will get a chance to implement this with your script at the end.
+We will demonstrate with a script, `demo_1.R` (in [resources](https://uniexeterrse.github.io/improve-r-code/resources.html)), which creates a dataframe, adds an ID column, calculates the mean of each column and then subtracts the mean from each value. Don't worry about coding along as you will get a chance to implement this with your script at the end.
 
 -----
 
@@ -115,7 +115,7 @@ https://www.hongkiat.com/blog/source-code-comment-styling-tips/
 
 🗣️ **Discussion**    
 
->Look at the code below and decide whether any of these lines of codes are over or under commented. Discuss with the person next to you and post on Slido what changes >you would make to the code.
+>Look at the code below and decide whether any of these lines of codes are over or under commented. Discuss with the person next to you and post on Slido what changes you would make to the code.
 
     
 ~~~r
