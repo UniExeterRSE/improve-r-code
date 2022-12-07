@@ -14,7 +14,7 @@ Have you ever opened a script and been overcome with a sense of dread at trying 
 
 🏃‍♀️ **Activity: the concept of "good" code. Judging a book by it's cover** 
 
->Good and bad are subjective concepts. When we look at a new piece of code we probably make an internal judgement on whether it is good or bad based solely on how it >is presented. Can you reflect in small groups, what specific characteristics you use to make this judgement. Focus purely on how it looks on the page.
+>Good and bad are subjective concepts. When we look at a new piece of code we probably make an internal judgement on whether it is good or bad based solely on how it is presented. Can you reflect in small groups, what specific characteristics you use to make this judgement. Focus purely on how it looks on the page.
 
 
 While the concept of aethetics and functionality are not completely overlapping, a well organised code is likely to function more efficiently. By aesthetics we refer to elements that aid both the writing and human-readability. These are also elements that we should all be able to implement without too much effort or new knowledge of how computer programming works. Essentially it is about consistency and establishing some standards for our own personal work that we adhere to and thus make it easier for someone else to read our scripts and know where to look for various information.  
