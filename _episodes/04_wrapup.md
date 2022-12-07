@@ -9,7 +9,7 @@ toc: true
 
 ## Acknowledgements
 
-This workshop, and the others in the series, were put together by the Research Software Engineering Group supported by a team of volunteers. It has been adapted/influenced by XXX. This is as part of an ongoing initiative to provide training for staff and students to expand their skill sets and position themselves to confidently perform the informatics elements of their research projects in an efficient and reproducible way.
+This workshop, and the others in the series, were put together by the Research Software Engineering Group supported by a team of volunteers. It has been adapted from a number of sources, including the [Good Code Handbook](https://goodresearch.dev/index.html), [Mastering Software Development in R](https://bookdown.org/rdpeng/RProgDA/) and the [RStudio helppages](https://support.posit.co/hc/en-us/articles/218221837-Profiling-with-RStudio). This is as part of an ongoing initiative to provide training for staff and students to expand their skill sets and position themselves to confidently perform the informatics elements of their research projects in an efficient and reproducible way.
 
 We are grateful to the workshop leaders and helpers for supporting the delivery.
 
