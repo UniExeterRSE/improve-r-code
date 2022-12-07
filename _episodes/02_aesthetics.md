@@ -12,7 +12,7 @@ toc: true
 
 Have you ever opened a script and been overcome with a sense of dread at trying to work out what it does and how? Or have you ever looked a script and found it enticing. The computer largely doesn't care how it is presented, it works it's way through from top to bottom. However, the way the code looks and is structured on the page helps a fellow programmer understand what the purpose of your code is and follow how the problem is tackled. 
 
-Activity: the concept of "good" code. Judgeing a book by it's cover. 
+Activity: the concept of "good" code. Judging a book by it's cover. 
 
 Good and bad are subjective concepts. When we look at a new piece of code we probably make an internal judgement on whether it is good or bad based solely on how it is presented. Can you reflect in small groups, what specific characteristics you use to make this judgement. Focus purely on how it looks on the page.
 
@@ -72,56 +72,81 @@ If you are working in RStudio, there are a few extra things you can include to m
         
         
 - snippets
+
+In RStudio, go to *Tools > Global Options > Code > Edit snippets*, enter the code below and save. Now type title into a script, run and see what happens.
+
 ~~~r
-    snippet title
-      ##---------------------------------------------------------------------#
-      ##
-      ## Title:       ========================================================
-      ##
-      ## Purpose of script:
-      ##
-      ## Author: 
-      ##
-      ## Date Created: `r paste(Sys.Date())`
-      ##
-      ##---------------------------------------------------------------------#
+snippet title
+  ##---------------------------------------------------------------------#
+  ##
+  ## Title:       ========================================================
+  ##
+  ## Purpose of script:
+  ##
+  ## Author: 
+  ##
+  ## Date Created: `r paste(Sys.Date())`
+  ##
+  ##---------------------------------------------------------------------#
 
-      ## clear the R environment
-      rm(list=ls()) 
-      ## set working directory
-      setwd("")
+  ## clear the R environment
+  rm(list=ls()) 
+  ## set working directory
+  setwd("")
 
-      #----------------------------------------------------------------------#
-      # LOAD PACKAGES ========================================================
-      #----------------------------------------------------------------------#
+  #----------------------------------------------------------------------#
+  # LOAD PACKAGES ========================================================
+  #----------------------------------------------------------------------#
 
-      #----------------------------------------------------------------------#
-      # IMPORT DATA ==========================================================
-      #----------------------------------------------------------------------#
-
-    snippet header
-      #----------------------------------------------------------------------#
-      #             ==========================================================
-      #----------------------------------------------------------------------#
+  #----------------------------------------------------------------------#
+  # IMPORT DATA ==========================================================
+  #----------------------------------------------------------------------#
 ~~~
+    
 </details>
     
 <details open>
 <summary><h3>1.5. Commenting</h3></summary>
 
-We all know we need to comment on code, but effective commenting requires some consideration. Too few comments leave gaps in the understanding, too many comments mean it can be hard to see the code, risk becoming outdated and often are redundant.
+We all know we need to comment on code, but effective commenting requires some consideration. Too many comments mean it can be hard to see the code, risk becoming outdated and often are redundant. If your function and variable names are well-written, this can reduce the need for comments, but too few comments leave gaps in the understanding.
 
 Think about the purpose of comments:
 
 https://www.hongkiat.com/blog/source-code-comment-styling-tips/
 
+🗣️ **Discussion**    
+
+Look at the code below and decide whether any of these lines of codes are over or under commented. Discuss with the person next to you and post on Slido what changes you would make to the code.
+
+    
+~~~r
+## Calculate total proportion of marks in each chromosome
+files <- list.files(compDir, pattern = 'chr\\d+_binary.+')
+allChr <- NULL
+## For loop reading in files to all chromosomes
+for (each in files) {
+  tmp <- read.delim(paste(compDir, each, sep = '/'), skip = 1)
+  allChr <- rbind(allChr, tmp)
+}
+    
+## Calculate proportions    
+prop <- apply(allChr, 2, function(x){
+  sum(x)/nrow(allChr)
+  })
+
+## Write proportion to table       
+write.table(prop[1], file = paste0(compDir,'/', args[3], "/completeness.txt"), 
+            sep = '\t', col.names = FALSE, 
+            row.names = FALSE)    
+~~~    
+        
 </details>
 
 -----
     
-## :running: Activities
+## 🏃‍♀️: Activities
 
-- [ ] Try running `lintr` on your own script and addressing the lines in the console. Do you need to configure the naming convention?
+- [ ] Try running `lintr` on your own script and addressing the lines in the console. Do you need to configure the defaults in line with your own style?
 - [ ] Exchange scripts with someone sat nearby to review the readability and organisation of your script
 - [ ] Rerun the test script `testStyle_2.R` to see how these changes have improved the style of your script
 
