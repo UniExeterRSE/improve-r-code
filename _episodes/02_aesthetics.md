@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Focus on the Aesthetics
+title: Attention on the Aesthetics
 order: 3
 session: 1
 length: 20
