@@ -60,7 +60,7 @@ There are also standard practices for code organisation. These will make your co
 3. source all the code at the beginning
 4. load all the data-files at the top
 
-See here: [Chapter 3 Code Structure | Best Coding Practices for R (bookdown.org)](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/code.html)
+See here: [Best Coding Practices for R](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/code.html)
 
 If you are working in RStudio, there are a few extra things you can include to make the document more readable and easier to navigate    
 
@@ -73,7 +73,7 @@ If you are working in RStudio, there are a few extra things you can include to m
         
 - snippets
 
-In RStudio, go to *Tools > Global Options > Code > Edit snippets*, enter the code below and save. Now type title into a script, run and see what happens.
+In RStudio, go to *Tools > Global Options > Code > Edit snippets*, enter the code below and save. Now type `title` into a script, run and see what happens.
 
 ~~~r
 snippet title
