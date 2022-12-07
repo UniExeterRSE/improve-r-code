@@ -88,10 +88,10 @@ Which command is the fastest? Are you surprised? `colMeans` is about 6x faster t
 Materials adapted from the [Good Code Handbook](https://goodresearch.dev/decoupled.html).
 
 A code smell is a problem with the code that indicates there might be some larger underlying issue, for example:
-- Duplicated code: large portions of duplicated code with small tweaks
-- Large functions: big, unwieldy functions that do a little bit of everything
-- High cyclomatic complexity: lots of nested ifs and for loops
-- Embedded configuration: paths and filenames are hardcoded 
+- **Duplicated code.** Large portions of duplicated code with small tweaks
+- **Large functions.** Big, unwieldy functions that do a little bit of everything
+- **High cyclomatic complexity.** Lots of nested ifs and for loops
+- **Embedded configuration.** Paths and filenames are hardcoded 
 
 From this we can conclude that a better way to code is to: 
 
