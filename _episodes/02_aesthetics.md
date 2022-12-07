@@ -12,7 +12,7 @@ toc: true
 
 Have you ever opened a script and been overcome with a sense of dread at trying to work out what it does and how? Or have you ever looked a script and found it enticing. The computer largely doesn't care how it is presented, it works it's way through from top to bottom. However, the way the code looks and is structured on the page helps a fellow programmer understand what the purpose of your code is and follow how the problem is tackled. 
 
-Activity: the concept of "good" code. Judging a book by it's cover. 
+🏃‍♀️ **Activity: the concept of "good" code. Judging a book by it's cover** 
 
 Good and bad are subjective concepts. When we look at a new piece of code we probably make an internal judgement on whether it is good or bad based solely on how it is presented. Can you reflect in small groups, what specific characteristics you use to make this judgement. Focus purely on how it looks on the page.
 
@@ -144,7 +144,7 @@ write.table(prop[1], file = paste0(compDir,'/', args[3], "/completeness.txt"),
 
 -----
     
-## 🏃‍♀️: Activities
+## 🏃‍♀️ Activities
 
 - [ ] Try running `lintr` on your own script and addressing the lines in the console. Do you need to configure the defaults in line with your own style?
 - [ ] Exchange scripts with someone sat nearby to review the readability and organisation of your script
