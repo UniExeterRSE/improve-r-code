@@ -8,7 +8,7 @@ toc: true
 ---
 
 
-## 2. Functionality
+## Functionality
 
 Are you aiming to make your code run faster? Be more efficient? Do you feel that you have some idea of what this may look like, but are unsure of exactly how to implement these structures? Implementing changes to the functionality of your scripting can be as simple or as complicated as it gets. Ultimately though, even simple changes implemented throughout your code will make a big difference to the speed of your scripts overall and their reproducibility. 
     
@@ -18,7 +18,7 @@ Further reading: [Mastering Software Development in R: Profiling and Benchmarkin
 
 ----
 
-### 2.1. Benchmarking
+### Benchmarking
 Let's start with how fast your script runs. Multiple packages exist to benchmark the speed of R code. You can do this using `Sys.time()` as we did in the initial speed test, or to look more closely at your functions, you can use the package `microbenchmark`:
     
 ```r
@@ -39,7 +39,7 @@ As you can see microbenchmark provides a number of summary statistics; `min`, `l
 
 -----
 
-### 2.2. Profiling
+### Profiling
 
 Now that you know the speed of your script, you’ll likely want to know which elements of your script are causing the bottlenecks and therefore where to focus your optimisation.
 
@@ -83,7 +83,7 @@ Which command is the fastest? Are you surprised? `colMeans` is about 6x faster t
 
 ----
 
-### 2.3. Spaghetti code and code smells
+### Spaghetti code and code smells
 
 Materials adapted from the [Good Code Handbook](https://goodresearch.dev/decoupled.html).
 
@@ -102,7 +102,83 @@ From this we can conclude that a better way to code is to:
 
 When code has a lot of code smells, it can become so fragile that it is difficult or impossible to change. Such code is often deemed spaghetti code, code so tightly wound that when you pull on one strand, the entire thing unravels. To be clear, the problem with spaghetti code is not that it doesn’t work, it's that it is inscrutable and unrobust.
 
------
+### Defining functions
+
+The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s). It means we can repeat the same operations with a single command.
+
+Let's start by defining a function `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
+
+```r
+fahr_to_kelvin <- function(temp) {
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+```
+
+We define `fahr_to_kelvin` by assigning it to the output of `function`.
+The list of argument names are contained within parentheses.
+Next, the body of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
+The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
+
+When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
+Inside the function, we use a return statement to send a result back to whoever asked for it.
+
+In R, it is not necessary to include the return statement.
+R automatically returns whichever variable is on the last line of the body
+of the function. 
+
+Calling our own function is no different from calling any other function:
+
+```r
+# freezing point of water
+fahr_to_kelvin(32)
+# boiling point of water
+fahr_to_kelvin(212)
+```
+Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin into Celsius:
+
+```r
+kelvin_to_celsius <- function(temp) {
+  celsius <- temp - 273.15
+  return(celsius)
+}
+
+#absolute zero in Celsius
+kelvin_to_celsius(0)
+```
+
+What about converting Fahrenheit to Celsius?
+We could write out the formula, but we don't need to.
+Instead, we can compose the two functions we have already created:
+
+```r
+fahr_to_celsius <- function(temp) {
+  temp_k <- fahr_to_kelvin(temp)
+  result <- kelvin_to_celsius(temp_k)
+  return(result)
+}
+
+# freezing point of water in Celsius
+fahr_to_celsius(32.0)
+```
+This is a taste of how larger programs are built: we define basic
+operations, then combine them in ever-larger chunks to get the effect we want.
+Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
+
+## Providing parameters to your script
+
+* config files
+* providing on the command line
+
+```
+args = commandArgs(trailingOnly=TRUE)
+```
+
+
+https://cran.r-project.org/web/packages/optparse/
+
+
+----
     
 ## 🏃‍♀️ Activities
 
