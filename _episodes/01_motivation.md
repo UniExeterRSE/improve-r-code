@@ -11,7 +11,7 @@ toc: true
 
 🏃‍♀️ **Activity: Why are you here today?** 
 
-In small groups/Slido discuss the points below. Think about your all your codes not just the one you have brought with you today. 
+In small groups/Slido discuss the points below. Think about all your codes not just the one you have brought with you today. 
 
 - What is it about your code that you think needs improving?
 - If you know what you need to do, why have you yet to implement it?
