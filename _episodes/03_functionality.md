@@ -165,18 +165,53 @@ This is a taste of how larger programs are built: we define basic
 operations, then combine them in ever-larger chunks to get the effect we want.
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
-## Providing parameters to your script
+## Running your script under different scenarioes
 
-* config files
-* providing on the command line
+Sometimes you may have a task that you want to repeat with subtle changes. We ar probably already aware that we can use variables at the top of our script to define, elements we want to modify. This can make it easy to rerun essentially the same code either with a different input file or with different parameters. However, how do you document this process? You want to keep the script with the exact parameters you ran. Also when you reuse the script in the future do you make a copy of it?  or over write it? What if yuo have multiple copies of the same script, just with different input conditions and you want to edit it, which version do you edit? How do know that you've remembered to edit all version of it. 
+
+In these situations we want to start thinking of our code as a piece of software or a programme which will do a given thing with provided inputs. To make this happen we need to be able to easily maintain a single version of the code and provide it with different values for the parameters when we run it. There are a couple of ways of approaching this task.
+
+* config files. Your R software takes advantage of a second R script, where the variables are defined. This is a very simple script, which essentially only includes assignment commands. Instead of having these at the top of your usual script, you put them in the config file. You then load the parameters via `source ` at the top of the script. From a maintanence point of view you then have a single script to do the compute, but you have multiple config files. 
+
+* specify on the command line. You may be used to using command line software (or even UNIX) where you provide the parameters as you execute the script. For example the UNIX `ls` command can be run with a provided filepath and then lists the files from that directory. In this way you can use a single command to list the contents of any directory on the system. It is an optional parameter, as it has a default value (the current directory) which it uses if you don't provide a file path.
 
 ```
-args = commandArgs(trailingOnly=TRUE)
+ls /usrs/home/ejh243
+```
+R scriptscan be run from the command line. (In fact we would argue that the final execution should be done this way as coping and pasting into the console is liable to problems). For example if you had an Rscript called `runAnalysis.r`, you could execute it as follows
+
+```
+Rscript runAnalysis.r
 ```
 
+This is how you might need to do it if you were using a HPC system with a scheduler where you submit your scripts via shell scripts. 
 
-https://cran.r-project.org/web/packages/optparse/
+In this way your script starts to function more like a programme, and you can provide parameters or arguments on the command line by add them after the script name. For example
 
+```
+Rscript runAnalysis.r /path/to/inputfile
+```
+You then need to add a few commands to `runAnalysis.r` so R knows where to find the values of the parameters.
+
+```
+args = commandArgs(trailingOnly=TRUE) # creates a variable of all the provided arguments
+
+inputFile = args[1] # takes the first argument at stores it in a more meaningful variable name.
+```
+
+You can use this approach to have as many arguments as you need. The only limitation of this method is you need to specify the arguments in the correct order, otherwise they will get assigned to the wrong variable. You also need to thing about how the programme would work if they were not provided at execution. For example you might need something like
+
+```
+args = commandArgs(trailingOnly=TRUE) # creates a variable of all the provided arguments
+
+if(!is.null(args[1])){
+  inputFile = args[1] # takes the first argument at stores it in a more meaningful variable name.
+} else {
+  inputFile = "<insert default>"
+}
+```
+
+If you want more flexibility, in the order you provide the arguments and a pre scpeficied framework for providing defaults take a look at the [optparse](https://cran.r-project.org/web/packages/optparse/) package which uses flags (e.g. "-p" ) to aid the configuration of a script on the command line.
 
 ----
     
